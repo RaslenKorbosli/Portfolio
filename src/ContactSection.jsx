@@ -30,6 +30,9 @@ const contactData = [
 const H2 = styled.h2`
   font-size: 2.4rem;
   margin-top: 2rem;
+  @media (max-width: 770px) {
+    font-size: 2rem;
+  }
 `;
 const Logo = styled.span`
   font-size: 3.5rem;
@@ -49,7 +52,13 @@ const ContactContainer = styled.div`
   align-content: center;
   max-width: 120rem;
   margin: 0 auto;
+  @media (max-width: 770px) {
+    grid-template-columns: minmax(200px, 1fr);
+    font-size: 1.8rem;
+    gap: 3.2rem;
+  }
 `;
+
 const ContactBox = styled.div`
   justify-self: center;
   text-align: center;

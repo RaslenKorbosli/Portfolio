@@ -4,6 +4,10 @@ const Footer = styled.footer`
   padding: var(--main-padding-layout);
   background-color: #51535c;
   color: #fff;
+  @media (max-width: 770px) {
+    padding-top: 2.4rem;
+    padding-bottom: 2.4rem;
+  }
 `;
 const FooterContainer = styled.div`
   max-width: 100rem;

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const Li = styled.li`
+  z-index: 0;
   transform: translateY(0px);
   transition: 0.3s all;
   &:hover {

@@ -8,6 +8,13 @@ const TachSkills = styled.ul`
   font-size: 2rem;
   font-weight: 400;
 `;
+const Span = styled.ul`
+  font-size: 1.8rem;
+  font-weight: 400;
+  @media (max-width: 950px) {
+    display: none;
+  }
+`;
 const skills = [
   ['html', 'css'],
   ['js', 'react'],
@@ -16,7 +23,7 @@ const skills = [
 function TechSkills() {
   return (
     <TachSkills>
-      <span> skill stack |</span>
+      <Span> skill stack |</Span>
       <ul>
         {skills.map((skillItem, i) => (
           <Skill skillItem={skillItem} key={i} />

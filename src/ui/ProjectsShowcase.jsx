@@ -36,11 +36,18 @@ const ProjectsContainer = styled.div`
   grid-template-columns: repeat(3, minmax(200px, 1fr));
   gap: 3.2rem;
   padding: 4.8rem 0;
+  text-align: center;
   /* max-width: 115rem; */
+  @media (max-width: 770px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, minmax(200px, 1fr));
+    font-size: 1.6rem;
+  }
 `;
 const TechContainer = styled.ul`
   display: flex;
   gap: 0.8rem;
+  justify-content: center;
 `;
 const ProjectText = styled.div`
   display: flex;
@@ -49,13 +56,25 @@ const ProjectText = styled.div`
 `;
 const ProjectImg = styled.img`
   max-width: 100%;
-  margin-bottom: 2rem;
+
+  @media (max-width: 770px) {
+    max-width: 80%;
+  }
 `;
 const Links = styled.div`
   display: flex;
-  gap: 2rem;
+  gap: 2.6rem;
   margin-top: 2rem;
   align-items: center;
+  justify-content: center;
+  @media (max-width: 950px) {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  @media (max-width: 770px) {
+    flex-direction: row;
+    gap: 2rem;
+  }
   /* justify-content: center; */
 `;
 const Link = styled.span`

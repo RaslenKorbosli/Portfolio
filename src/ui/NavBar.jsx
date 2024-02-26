@@ -11,6 +11,7 @@ const NavBar = styled.nav`
   align-items: center;
   justify-content: space-between;
   padding: 2.5rem 5rem 2.5rem 5rem;
+  z-index: 100;
 `;
 const Li = styled.li`
   &:hover {
@@ -25,6 +26,11 @@ const Logo = styled.a`
     color: var(--color-hover);
   }
 `;
+const Ul = styled.ul`
+  @media (max-width: 600px) {
+    display: none;
+  }
+`;
 const NavData = [
   { link: 'Home', href: '#home' },
   { link: 'About', href: '#about' },
@@ -35,13 +41,13 @@ function Header() {
   return (
     <NavBar>
       <Logo href="#home">Raslen.dev</Logo>
-      <ul>
+      <Ul>
         {NavData.map((data, i) => (
           <Li key={i}>
             <a href={data.href}>{data.link} </a>
           </Li>
         ))}
-      </ul>
+      </Ul>
     </NavBar>
   );
 }
