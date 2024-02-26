@@ -31,10 +31,10 @@ const GlobalStyling = createGlobalStyle`
     display: flex;
     gap: 24px;
     font-weight: 500;
-   
+
   }
   li:hover {
-    color: var(--color-hover);
+    
     
     transition: 0.3s color;
   }

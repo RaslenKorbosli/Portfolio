@@ -1,16 +1,16 @@
 import styled from 'styled-components';
-const TechTag = styled.div`
-  display: flex;
-  /* gap: 0.6rem; */
-`;
-const Img = styled.img`
-  height: 3rem;
-`;
+const TechTag = styled.div``;
+
 function TechUsed({ tech }) {
-  const imgUrl = `../../images/${tech}.png`;
+  console.log(tech);
   return (
     <TechTag>
-      <Img src={imgUrl} alt="" />
+      <img
+        src={`https://skillicons.dev/icons?i=${tech} `}
+        width={'24px'}
+        height={'24px'}
+        alt="skill"
+      />
     </TechTag>
   );
 }

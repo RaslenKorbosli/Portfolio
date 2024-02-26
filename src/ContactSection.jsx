@@ -9,17 +9,20 @@ const contactData = [
     contactId: '123',
     contact: 'Email',
     contactInfo: 'raslen.korbosli01@gmail.com',
+    href: 'mailto:raslen.korbosli01@gmail.com',
     contactLogo: <IoLocationOutline />,
   },
   {
     contactId: '125',
     contact: 'Phone',
     contactInfo: '(+216)22027872',
+    href: '',
     contactLogo: <MdOutlineEmail />,
   },
   {
     contactId: '127',
     contact: 'Location',
+    href: 'https://www.google.com/maps/place/Tunis/@36.7637674,10.2160688,11.47z/data=!4m6!3m5!1s0x12fd337f5e7ef543:0xd671924e714a0275!8m2!3d36.8064948!4d10.1815316!16zL20vMGZ0bjg?entry=ttu',
     contactInfo: 'Tunisia/Tunis',
     contactLogo: <FiPhone />,
   },
@@ -31,15 +34,18 @@ const H2 = styled.h2`
 const Logo = styled.span`
   font-size: 3.5rem;
 `;
-const P = styled.p`
+const Link = styled.a`
   text-decoration: underline;
   font-weight: 400;
+  &:hover {
+    color: var(--color-hover);
+  }
 `;
 const ContactContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(200px, 1fr));
   gap: 2rem;
-  padding: 4.8rem 2.4rem;
+  padding: 7.2rem 2.4rem;
   align-content: center;
   max-width: 120rem;
   margin: 0 auto;
@@ -50,13 +56,15 @@ const ContactBox = styled.div`
 `;
 function ContactSection() {
   return (
-    <ContactContainer>
+    <ContactContainer id="contact">
       {contactData.map((contact) => (
         <Contact key={contact.contactId}>
           <ContactBox>
             <Logo> {contact.contactLogo}</Logo>
             <H2>{contact.contact}</H2>
-            <P>{contact.contactInfo}</P>
+            <Link href={contact.href || null} target="blanc">
+              {contact.contactInfo}
+            </Link>
           </ContactBox>
         </Contact>
       ))}

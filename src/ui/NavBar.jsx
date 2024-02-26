@@ -12,23 +12,35 @@ const NavBar = styled.nav`
   justify-content: space-between;
   padding: 2.5rem 5rem 2.5rem 5rem;
 `;
+const Li = styled.li`
+  &:hover {
+    color: var(--color-hover);
+  }
+`;
+
+const Logo = styled.a`
+  font-size: 2.4rem;
+  font-weight: 600;
+  &:hover {
+    color: var(--color-hover);
+  }
+`;
+const NavData = [
+  { link: 'Home', href: '#home' },
+  { link: 'About', href: '#about' },
+  { link: 'Project', href: '#projects' },
+  { link: 'Contact', href: '#contact' },
+];
 function Header() {
   return (
     <NavBar>
-      <h3>Raslen.dev</h3>
+      <Logo href="#home">Raslen.dev</Logo>
       <ul>
-        <li>
-          <a href="#home"> Home</a>
-        </li>
-        <li>
-          <a href="#about">About </a>
-        </li>
-        <li>
-          <a href="#projects">Projects </a>
-        </li>
-        <li>
-          <a href="#contact">Contact </a>
-        </li>
+        {NavData.map((data, i) => (
+          <Li key={i}>
+            <a href={data.href}>{data.link} </a>
+          </Li>
+        ))}
       </ul>
     </NavBar>
   );

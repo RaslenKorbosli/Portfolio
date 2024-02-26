@@ -9,7 +9,7 @@ const projects = [
   {
     projectID: '001',
     projectName: 'project showcase01',
-    technologies: ['css', 'js'],
+    technologies: ['js', 'css'],
     projectTitle: 'Check out this project to see my skills in action',
     githubSource: 'https://github.com/',
     liveDemoURL: 'https://github.com/',
@@ -17,7 +17,7 @@ const projects = [
   {
     projectID: '002',
     projectName: 'project showcase02',
-    technologies: ['react', 'sass'],
+    technologies: ['react', 'tailwind', 'redux'],
     projectTitle: 'Check out this project to see my skills in action',
     githubSource: 'https://github.com/',
     liveDemoURL: 'https://github.com/',
@@ -25,7 +25,7 @@ const projects = [
   {
     projectID: '003',
     projectName: 'project showcase03',
-    technologies: ['tailwind', 'js'],
+    technologies: ['js', 'sass'],
     projectTitle: 'Check out this project to see my skills in action',
     githubSource: 'https://github.com/',
     liveDemoURL: 'https://github.com/',
@@ -40,12 +40,12 @@ const ProjectsContainer = styled.div`
 `;
 const TechContainer = styled.ul`
   display: flex;
-  gap: 2rem;
+  gap: 0.8rem;
 `;
 const ProjectText = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.2rem;
 `;
 const ProjectImg = styled.img`
   max-width: 100%;
@@ -54,8 +54,9 @@ const ProjectImg = styled.img`
 const Links = styled.div`
   display: flex;
   gap: 2rem;
+  margin-top: 2rem;
   align-items: center;
-  margin-top: 1rem;
+  /* justify-content: center; */
 `;
 const Link = styled.span`
   display: flex;
@@ -66,7 +67,11 @@ const Link = styled.span`
     font-weight: 500;
   }
 `;
-
+const H2 = styled.h2`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
 function ProjectShowcase() {
   return (
     <ProjectsContainer>
@@ -76,21 +81,29 @@ function ProjectShowcase() {
             <ProjectImg src={Img} alt="" />
           </div>
           <ProjectText>
-            <h1>{project.projectName}</h1>
+            <div>
+              <H2>{project.projectName}</H2>
+              <TechContainer>
+                {' '}
+                {project.technologies.map((tech, i) => (
+                  <TechUsed tech={tech} key={i} />
+                ))}
+              </TechContainer>
+            </div>
+
             <p>{project.projectTitle}</p>
-            <TechContainer>
-              {' '}
-              {project.technologies.map((tech, i) => (
-                <TechUsed tech={tech} key={i} />
-              ))}
-            </TechContainer>
+
             <Links>
               <Link>
-                {' '}
-                <a href={project.githubSource}> code source </a> <FaGithub />
+                <a href={project.githubSource} target="blanc">
+                  code source
+                </a>
+                <FaGithub />
               </Link>
               <Link>
-                <a href={project.githubSource}> Live Demo </a>
+                <a href={project.githubSource} target="blanc">
+                  Live Demo
+                </a>
                 <FaArrowUpRightFromSquare />
               </Link>
             </Links>

@@ -6,17 +6,17 @@ const Footer = styled.footer`
   color: #fff;
 `;
 const FooterContainer = styled.div`
-  max-width: 140rem;
+  max-width: 100rem;
   margin: 0 auto;
 `;
-
+const year = new Date().getFullYear();
 function FooterSection() {
   return (
     <Footer>
       <FooterContainer>
-        <h3>Raslen.dev</h3>
-        <SocialLink></SocialLink>
-        <p>Copyright © 2024. All rights are reserved</p>
+        <h2>Raslen.dev</h2>
+        <SocialLink></SocialLink> <br />
+        <p>Copyright © {year}. All rights are reserved</p>
       </FooterContainer>
     </Footer>
   );
