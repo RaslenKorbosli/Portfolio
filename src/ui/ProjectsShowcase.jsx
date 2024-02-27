@@ -42,6 +42,7 @@ const ProjectsContainer = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, minmax(200px, 1fr));
     font-size: 1.6rem;
+    gap: 5.2rem;
   }
 `;
 const TechContainer = styled.ul`
@@ -74,6 +75,7 @@ const Links = styled.div`
   @media (max-width: 770px) {
     flex-direction: row;
     gap: 2rem;
+    margin-top: 0;
   }
   /* justify-content: center; */
 `;

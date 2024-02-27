@@ -32,10 +32,14 @@ const H2 = styled.h2`
   margin-top: 2rem;
   @media (max-width: 770px) {
     font-size: 2rem;
+    margin-top: 0;
   }
 `;
 const Logo = styled.span`
-  font-size: 3.5rem;
+  font-size: 3.6rem;
+  @media (max-width: 770px) {
+    font-size: 2.8rem;
+  }
 `;
 const Link = styled.a`
   text-decoration: underline;

@@ -5,6 +5,7 @@ const Container = styled.section`
   height: 100vh;
   display: flex;
   align-items: center;
+
   background-color: var(--color-main-background);
 `;
 const H1 = styled.h1`
