@@ -16,7 +16,7 @@ const contactData = [
     contactId: '125',
     contact: 'Phone',
     contactInfo: '(+216)22027872',
-    href: '',
+    href: 'tel:22027872',
     contactLogo: <MdOutlineEmail />,
   },
   {
