@@ -16,7 +16,7 @@ const AboutMe = styled.div`
     grid-template-columns: 25rem 1fr;
   }
   @media (max-width: 770px) {
-    grid-template-rows: 15rem 1fr 30rem;
+    grid-template-rows: 15rem 1fr;
     grid-template-columns: 1fr;
     column-gap: normal;
     padding: 0;

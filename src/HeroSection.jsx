@@ -29,6 +29,7 @@ const Img = styled.img`
 
   @media (max-width: 950px) {
     grid-row: 1/2;
+    max-width: 80%;
   }
 `;
 const Content = styled.div`
@@ -43,9 +44,9 @@ const Content = styled.div`
   @media (max-width: 950px) {
     padding-top: 4.6rem;
     grid-template-columns: 1fr;
-    grid-template-rows: minmax(150px, 1fr) 1fr 1fr;
+
     height: 80vh;
-    gap: 2rem;
+
     justify-items: center;
     align-items: center;
     text-align: center;
@@ -56,6 +57,9 @@ const Content = styled.div`
 const HeroText = styled.div`
   max-width: 80%;
   font-size: 1.8rem;
+  @media (max-width: 950px) {
+    align-self: self-start;
+  }
 `;
 
 function HeroSection() {
