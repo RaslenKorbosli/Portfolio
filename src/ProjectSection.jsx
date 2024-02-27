@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 
 import ProjectShowcase from './ui/ProjectsShowcase';
+import { useEffect, useRef, useState } from 'react';
 const ProjectSectionContainer = styled.section`
   background-color: var(--color-main-background);
   padding: var(--main-padding-layout);
-
+  transform: translateY(10%);
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: 0.6s ease-out;
 `;
 const H1 = styled.h1`
   font-size: 3.6rem;
@@ -25,9 +27,24 @@ const P = styled.p`
     text-align: center;
   }
 `;
+
 function ProjectSection() {
+  const myRef = useRef();
+  const [isElementVisible, setIsElementVisible] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      console.log(isElementVisible);
+      setIsElementVisible(entry.isIntersecting);
+    });
+    observer.observe(myRef.current);
+  }, [isElementVisible]);
   return (
-    <ProjectSectionContainer id="projects">
+    <ProjectSectionContainer
+      ref={myRef}
+      id="projects"
+      style={{ transform: isElementVisible && 'translateY(0%)' }}
+    >
       <H1>Highlighting My Best Work</H1>
       <P> Explore my portfolio and discover my creative project </P>
       <ProjectShowcase />

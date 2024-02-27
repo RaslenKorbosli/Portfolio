@@ -2,7 +2,6 @@ import styled from 'styled-components';
 const TechTag = styled.div``;
 
 function TechUsed({ tech }) {
-  console.log(tech);
   return (
     <TechTag>
       <img

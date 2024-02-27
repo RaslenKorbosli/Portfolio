@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import img from '../images/profilePhoto.jpg';
 import TechSkills from './ui/TechSkills';
+import { useEffect, useRef, useState } from 'react';
 const Container = styled.section`
   height: 100vh;
   display: flex;
@@ -12,6 +13,7 @@ const H1 = styled.h1`
   font-size: 5.2rem;
   line-height: 1.2;
   padding-bottom: 2.4rem;
+
   @media (max-width: 950px) {
     font-size: 4.6rem;
   }
@@ -26,7 +28,9 @@ const Img = styled.img`
   max-width: 100%;
   max-height: 100%;
   border-radius: 48%;
-
+  transition: 0.6s ease-in-out;
+  transform: ${(props) =>
+    props.isElementVisible ? 'translateX(0)' : 'translateX(20%)'};
   @media (max-width: 950px) {
     grid-row: 1/2;
     max-width: 80%;
@@ -57,16 +61,29 @@ const Content = styled.div`
 const HeroText = styled.div`
   max-width: 80%;
   font-size: 1.8rem;
+  transition: 0.6s ease-in-out;
+  transform: ${(props) =>
+    props.isElementVisible ? 'translateX(0)' : 'translateX(-20%)'};
   @media (max-width: 950px) {
     align-self: self-start;
   }
 `;
 
 function HeroSection() {
+  const myRef = useRef();
+  const [isElementVisible, setIsElementVisible] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      console.log(isElementVisible);
+      setIsElementVisible(entry.isIntersecting);
+    });
+    observer.observe(myRef.current);
+  }, [isElementVisible]);
   return (
-    <Container id="home">
+    <Container id="home" ref={myRef}>
       <Content>
-        <HeroText>
+        <HeroText isElementVisible={isElementVisible}>
           <H1>Front End React Developer</H1>{' '}
           <p>
             Hi, Im Raslen Korbosli, 19 Years Old From Tunisia ,A passionate
@@ -74,8 +91,8 @@ function HeroSection() {
           </p>
         </HeroText>
 
-        <Img src={img} alt="" />
-        <TechSkills />
+        <Img src={img} alt="" isElementVisible={isElementVisible} />
+        <TechSkills isElementVisible={isElementVisible} />
       </Content>
     </Container>
   );

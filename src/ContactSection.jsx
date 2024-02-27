@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { IoLocationOutline } from 'react-icons/io5';
 import { MdOutlineEmail } from 'react-icons/md';
 import { FiPhone } from 'react-icons/fi';
+import { useEffect, useRef, useState } from 'react';
 // import { MdOutlineMail } from 'react-icons/md';
 const contactData = [
   {
@@ -51,8 +52,9 @@ const Link = styled.a`
 const ContactContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(200px, 1fr));
-  gap: 2rem;
+  gap: 22rem;
   padding: 7.2rem 2.4rem;
+  transition: 0.8s;
   align-content: center;
   max-width: 120rem;
   margin: 0 auto;
@@ -68,8 +70,22 @@ const ContactBox = styled.div`
   text-align: center;
 `;
 function ContactSection() {
+  const myRef = useRef();
+  const [isElementVisible, setIsElementVisible] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      console.log(isElementVisible);
+      setIsElementVisible(entry.isIntersecting);
+    });
+    observer.observe(myRef.current);
+  }, [isElementVisible]);
   return (
-    <ContactContainer id="contact">
+    <ContactContainer
+      id="contact"
+      ref={myRef}
+      style={{ gap: isElementVisible && '2rem' }}
+    >
       {contactData.map((contact) => (
         <Contact key={contact.contactId}>
           <ContactBox>

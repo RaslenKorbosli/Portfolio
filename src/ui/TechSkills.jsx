@@ -7,6 +7,9 @@ const TachSkills = styled.ul`
   align-items: center;
   font-size: 2rem;
   font-weight: 400;
+  transition: 0.6s;
+  transform: ${(props) =>
+    props.isElementVisible ? 'translateY(0)' : 'translateY(40%)'};
 `;
 const Span = styled.ul`
   font-size: 1.8rem;
@@ -20,9 +23,9 @@ const skills = [
   ['js', 'react'],
   ['tailwind', 'sass'],
 ];
-function TechSkills() {
+function TechSkills({ isElementVisible }) {
   return (
-    <TachSkills>
+    <TachSkills isElementVisible={isElementVisible}>
       <Span> skill stack |</Span>
       <ul>
         {skills.map((skillItem, i) => (
