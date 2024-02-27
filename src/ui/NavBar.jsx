@@ -14,9 +14,12 @@ const NavBar = styled.nav`
   font-size: 1.8rem;
   align-items: center;
   justify-content: space-between;
-  padding: 2.5rem 5rem 2.5rem 5rem;
+  padding: 2.5rem 5rem;
   z-index: 100;
   position: fixed;
+  @media (max-width: 600px) {
+    padding: 1.8rem 2.5rem;
+  }
 `;
 const Li = styled.li`
   &:hover {
@@ -32,6 +35,9 @@ const Logo = styled.a`
   }
   @media (max-width: 600px) {
     font-size: 2rem;
+    &:hover {
+      color: inherit;
+    }
   }
 `;
 const Ul = styled.ul`
@@ -49,7 +55,7 @@ const UlMenu = styled.ul`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  font-size: 2.4rem;
+  font-size: 2.6rem;
 
   /* @media (max-width: 600px) {
     display: none;

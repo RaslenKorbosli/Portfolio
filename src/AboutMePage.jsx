@@ -32,7 +32,7 @@ const Img = styled.img`
   }
   @media (max-width: 770px) {
     grid-column: 1/-1;
-    max-width: 50%;
+    max-width: 70%;
     grid-row: 2/3;
     justify-self: center;
   }

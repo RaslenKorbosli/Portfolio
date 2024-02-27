@@ -49,6 +49,7 @@ const Content = styled.div`
     justify-items: center;
     align-items: center;
     text-align: center;
+    padding: 0 3.6rem;
   }
   /* align-content: center; */
 `;
