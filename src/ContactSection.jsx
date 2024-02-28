@@ -52,9 +52,9 @@ const Link = styled.a`
 const ContactContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(200px, 1fr));
-  gap: 22rem;
+  gap: 20rem;
   padding: 7.2rem 2.4rem;
-  transition: 0.8s;
+  transition: 0.8s ease-in-out;
   align-content: center;
   max-width: 120rem;
   margin: 0 auto;
@@ -73,11 +73,16 @@ function ContactSection() {
   const myRef = useRef();
   const [isElementVisible, setIsElementVisible] = useState(false);
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      console.log(isElementVisible);
-      setIsElementVisible(entry.isIntersecting);
-    });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        console.log(isElementVisible);
+        setIsElementVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0.2,
+      }
+    );
     observer.observe(myRef.current);
   }, [isElementVisible]);
   return (

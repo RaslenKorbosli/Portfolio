@@ -29,8 +29,11 @@ const Img = styled.img`
   max-height: 100%;
   border-radius: 48%;
   transition: 0.6s ease-in-out;
+  grid-row: -2 / span 2;
+  grid-column: 2/-1;
+
   transform: ${(props) =>
-    props.isElementVisible ? 'translateX(0)' : 'translateX(20%)'};
+    props.isElementVisible ? 'translateX(0)' : 'translateX(10%)'};
   @media (max-width: 950px) {
     grid-row: 1/2;
     max-width: 80%;
@@ -39,12 +42,14 @@ const Img = styled.img`
 const Content = styled.div`
   display: grid;
   column-gap: 2rem;
-  grid-template-columns: 2fr minmax(30rem, 1fr);
+  grid-template-columns: 1fr 35rem;
   height: 50rem;
   align-items: center;
   max-width: 100rem;
   padding: 0 4.8rem;
   margin: 0 auto;
+  transition: 0.6s ease-in;
+  opacity: ${(props) => (props.isElementVisible ? 1 : 0)};
   @media (max-width: 950px) {
     padding-top: 4.6rem;
     grid-template-columns: 1fr;
@@ -75,14 +80,14 @@ function HeroSection() {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       const entry = entries[0];
-      console.log(isElementVisible);
-      setIsElementVisible(entry.isIntersecting);
+
+      entry.isIntersecting && setIsElementVisible(true);
     });
     observer.observe(myRef.current);
   }, [isElementVisible]);
   return (
     <Container id="home" ref={myRef}>
-      <Content>
+      <Content isElementVisible={isElementVisible}>
         <HeroText isElementVisible={isElementVisible}>
           <H1>Front End React Developer</H1>{' '}
           <p>

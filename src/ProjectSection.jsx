@@ -32,11 +32,15 @@ function ProjectSection() {
   const myRef = useRef();
   const [isElementVisible, setIsElementVisible] = useState(false);
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      console.log(isElementVisible);
-      setIsElementVisible(entry.isIntersecting);
-    });
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        const entry = entries[0];
+        entry.isIntersecting && setIsElementVisible(true);
+      },
+      {
+        threshold: 0.1,
+      }
+    );
     observer.observe(myRef.current);
   }, [isElementVisible]);
   return (
