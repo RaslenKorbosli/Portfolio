@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import img from '../images/profilePhoto.jpg';
+import img from '../images/profilePhoto.webp';
 import TechSkills from './ui/TechSkills';
 import { useEffect, useRef, useState } from 'react';
+import SocialLink from './ui/SocialLink';
 const Container = styled.section`
   height: 100vh;
   display: flex;
@@ -96,6 +97,7 @@ function HeroSection() {
             Hi, Im Raslen Korbosli, 19 Years Old From Tunisia ,A passionate
             Front-end React Developer
           </p>
+          <SocialLink />
         </HeroText>
 
         <Img src={img} alt="" isElementVisible={isElementVisible} />

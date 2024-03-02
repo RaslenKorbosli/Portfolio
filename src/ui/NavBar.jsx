@@ -19,7 +19,7 @@ const NavBar = styled.nav`
   padding: 2.5rem 5rem;
   z-index: 100;
   position: fixed;
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     padding: 1.8rem 2.5rem;
   }
 `;
@@ -35,7 +35,7 @@ const Logo = styled.a`
   &:hover {
     color: var(--color-hover);
   }
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     font-size: 2rem;
     &:hover {
       color: inherit;
@@ -43,7 +43,7 @@ const Logo = styled.a`
   }
 `;
 const Ul = styled.ul`
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     display: none;
   }
 `;
@@ -67,8 +67,7 @@ const DropMenu = styled.div`
   display: none;
   font-size: 2.8rem;
   z-index: 100;
-  @media (max-width: 600px) {
-    display: block;
+  @media (max-width: 700px) {
     display: flex;
     align-items: center;
 

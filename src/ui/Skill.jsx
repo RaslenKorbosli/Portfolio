@@ -5,7 +5,7 @@ const Li = styled.li`
   transform: translateY(0px);
   transition: 0.3s all;
   &:hover {
-    transform: translateY(-1.8rem);
+    transform: translateY(-1.2rem);
     transition: 0.3s all;
   }
 `;
