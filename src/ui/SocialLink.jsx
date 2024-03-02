@@ -13,6 +13,7 @@ const links = [
 ];
 const LinksLogo = styled.ul`
   display: flex;
+
   gap: 1rem;
   font-size: 2.4rem;
   margin: 1rem 0;
