@@ -9,7 +9,6 @@ const AboutMe = styled.div`
   display: grid;
   grid-template-columns: 35rem 1fr;
   transition: 0.6s;
-  opacity: ${(props) => (props.isElementVisible ? 1 : 0)};
   max-width: 100rem;
   margin: 0 auto;
   column-gap: 4.2rem;
@@ -30,8 +29,8 @@ const Img = styled.img`
   border-radius: 1.4rem;
   grid-row: 1/-3;
   transition: 0.6s ease-in-out;
-  /* transform: ${(props) =>
-    props.isElementVisible ? 'translateX(0)' : 'translateX(-10%)'}; */
+  transform: ${(props) =>
+    props.isElementVisible ? 'translateX(0)' : 'translateX(-10%)'};
   @media (max-width: 950px) {
     max-width: 80%;
   }

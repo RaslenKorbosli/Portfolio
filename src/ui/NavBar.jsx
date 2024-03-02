@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import { IoMenu } from 'react-icons/io5';
-import { useState } from 'react';
+
 import DropDownMenu from './DropDownMenu';
 import { IoClose } from 'react-icons/io5';
+import { Link } from 'react-scroll';
+import { useState } from 'react';
 const NavBar = styled.nav`
   display: flex;
   width: 100vw;
@@ -78,38 +80,13 @@ const DropMenu = styled.div`
 `;
 
 const NavData = [
-  { link: 'Home', href: '#home' },
-  { link: 'About', href: '#about' },
-  { link: 'Project', href: '#projects' },
-  { link: 'Contact', href: '#contact' },
+  { link: 'Home', href: 'home' },
+  { link: 'About', href: 'about' },
+  { link: 'Project', href: 'projects' },
+  { link: 'Contact', href: 'contact' },
 ];
-// const MenuContainer = styled.div`
-//     width: 100%;
-//     height: 100vh;
-//     top: 0;
-//     left: 0;
-//     position: absolute;
-//     background-color: var(--color-main-background);
-//     backdrop-filter: blur(10px);
-//     display: ${isOpen ? 'flex' : 'none'};
-//     justify-content: center;
-//     align-items: center;
-//     /* animation: slideIn 0.3s ease-in-out; */
-//     transform: ${isOpen ? 'translateX(0%)' : 'translateX(200%)'};
-//     transition: 0.3s transform;
-//     @keyframes slideIn {
-//       from {
-//         transform: translateX(200%);
-//         opacity: 0;
-//       }
-//       to {
-//         transform: translateX(0);
-//         opacity: 1;
-//       }
-//     }
-//   `;
 const MenuContainer = styled.div`
-  display: flex;
+  display: ${(props) => (props.isOpen ? 'flex' : 'hidden')};
   position: absolute; /* Required for animation positioning */
   top: 0;
   position: absolute;
@@ -131,7 +108,17 @@ function Header() {
 
   return (
     <NavBar>
-      <Logo href="#home">Raslen.dev</Logo>
+      <Logo href="#home">
+        <Link
+          to={'home'}
+          smooth={true}
+          duration={500}
+          spy={true}
+          // offset={-50}
+        >
+          Raslen.dev
+        </Link>
+      </Logo>
       <DropMenu onClick={handleClick}>
         {isOpen ? <IoClose /> : <IoMenu />}
       </DropMenu>
@@ -141,7 +128,17 @@ function Header() {
           <UlMenu>
             {NavData.map((data, i) => (
               <LiMenu key={i} onClick={handleClick}>
-                <a href={data.href}>{data.link} </a>
+                <Link
+                  to={data.href}
+                  smooth={true}
+                  duration={500}
+                  spy={true}
+                  offset={-50}
+                  onClick={handleClick}
+                >
+                  {data.link}
+                </Link>
+                {/* <a href={data.href}>{data.link} </a> */}
               </LiMenu>
             ))}
           </UlMenu>
@@ -151,7 +148,15 @@ function Header() {
       <Ul>
         {NavData.map((data, i) => (
           <Li key={i}>
-            <a href={data.href}>{data.link} </a>
+            <Link
+              to={data.href}
+              smooth={true}
+              duration={500}
+              spy={true}
+              offset={-80}
+            >
+              {data.link}
+            </Link>
           </Li>
         ))}
       </Ul>

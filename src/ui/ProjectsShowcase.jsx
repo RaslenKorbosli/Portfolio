@@ -85,7 +85,7 @@ const Link = styled.span`
   gap: 0.8rem;
   &:hover {
     text-decoration: underline;
-    font-weight: 500;
+    font-weight: 600;
   }
 `;
 const H2 = styled.h2`
@@ -117,7 +117,7 @@ function ProjectShowcase() {
             <Links>
               <Link>
                 <a href={project.githubSource} target="blanc">
-                  code source
+                  source code
                 </a>
                 <FaGithub />
               </Link>

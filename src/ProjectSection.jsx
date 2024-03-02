@@ -33,7 +33,7 @@ function ProjectSection() {
   const [isElementVisible, setIsElementVisible] = useState(false);
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries, observer) => {
+      (entries) => {
         const entry = entries[0];
         entry.isIntersecting && setIsElementVisible(true);
       },

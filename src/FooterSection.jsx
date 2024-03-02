@@ -27,7 +27,7 @@ function FooterSection() {
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
-        console.log(entry.isIntersecting);
+
         entry.isIntersecting && setIsElementVisible(true);
       },
       { threshold: 0.2 }

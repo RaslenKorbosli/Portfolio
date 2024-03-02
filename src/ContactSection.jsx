@@ -54,10 +54,11 @@ const ContactContainer = styled.div`
   grid-template-columns: repeat(3, minmax(200px, 1fr));
   gap: 20rem;
   padding: 7.2rem 2.4rem;
-  transition: 0.8s ease-in-out;
+  transition: 0.6s ease-in-out;
   align-content: center;
   max-width: 120rem;
   margin: 0 auto;
+  opacity: 0;
   @media (max-width: 770px) {
     grid-template-columns: minmax(200px, 1fr);
     font-size: 1.8rem;
@@ -76,7 +77,7 @@ function ContactSection() {
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
-        console.log(isElementVisible);
+
         entry.isIntersecting && setIsElementVisible(true);
       },
       {
@@ -89,7 +90,10 @@ function ContactSection() {
     <ContactContainer
       id="contact"
       ref={myRef}
-      style={{ gap: isElementVisible && '2rem' }}
+      style={{
+        gap: isElementVisible && '2rem',
+        opacity: isElementVisible && '1',
+      }}
     >
       {contactData.map((contact) => (
         <Contact key={contact.contactId}>
