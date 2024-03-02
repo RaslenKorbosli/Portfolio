@@ -83,9 +83,11 @@ const Link = styled.span`
   display: flex;
   align-items: center;
   gap: 0.8rem;
+
   &:hover {
     text-decoration: underline;
     font-weight: 600;
+    /* font-size: 1.65rem; */
   }
 `;
 const H2 = styled.h2`

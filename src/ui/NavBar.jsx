@@ -8,7 +8,6 @@ import { useState } from 'react';
 const NavBar = styled.nav`
   display: flex;
   width: 100vw;
-
   background-color: #fff;
   top: 0;
   left: 0;
@@ -16,7 +15,7 @@ const NavBar = styled.nav`
   font-size: 1.8rem;
   align-items: center;
   justify-content: space-between;
-  padding: 2.5rem 5rem;
+  padding: 2.5rem 8rem;
   z-index: 100;
   position: fixed;
   @media (max-width: 700px) {
@@ -24,6 +23,9 @@ const NavBar = styled.nav`
   }
 `;
 const Li = styled.li`
+  cursor: pointer;
+  font-weight: 500;
+  /* font-size: 1.8rem; */
   &:hover {
     color: var(--color-hover);
   }
@@ -108,13 +110,7 @@ function Header() {
   return (
     <NavBar>
       <Logo href="#home">
-        <Link
-          to={'home'}
-          smooth={true}
-          duration={500}
-          spy={true}
-          // offset={-50}
-        >
+        <Link to={'home'} smooth={true} duration={500} spy={true}>
           Raslen.dev
         </Link>
       </Logo>

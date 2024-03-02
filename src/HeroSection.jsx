@@ -97,7 +97,7 @@ function HeroSection() {
             Hi, Im Raslen Korbosli, 19 Years Old From Tunisia ,A passionate
             Front-end React Developer
           </p>
-          <SocialLink />
+          <SocialLink color={'#147efb'} />
         </HeroText>
 
         <Img src={img} alt="" isElementVisible={isElementVisible} />

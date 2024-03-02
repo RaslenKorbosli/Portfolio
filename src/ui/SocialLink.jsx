@@ -20,14 +20,14 @@ const LinksLogo = styled.ul`
 const Li = styled.li`
   &:hover {
     /* font-size: 2.8rem; */
-    color: #c8cad3;
+    color: ${(props) => props.color};
   }
 `;
-function SocialLink() {
+function SocialLink({ color }) {
   return (
     <LinksLogo>
       {links.map((link) => (
-        <Li key={link.link}>
+        <Li key={link.link} color={color}>
           {' '}
           <a href="">{link.logo}</a>{' '}
         </Li>

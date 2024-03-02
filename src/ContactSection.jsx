@@ -53,7 +53,7 @@ const ContactContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(200px, 1fr));
   gap: 20rem;
-  padding: 7.2rem 2.4rem;
+  padding: 8.2rem 2.4rem;
   transition: 0.6s ease-in-out;
   align-content: center;
   max-width: 120rem;
