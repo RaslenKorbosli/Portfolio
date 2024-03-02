@@ -61,7 +61,7 @@ const ContactContainer = styled.div`
   @media (max-width: 770px) {
     grid-template-columns: minmax(200px, 1fr);
     font-size: 1.8rem;
-    gap: 3.2rem;
+    gap: 2rem;
   }
 `;
 
@@ -77,7 +77,7 @@ function ContactSection() {
       (entries) => {
         const entry = entries[0];
         console.log(isElementVisible);
-        setIsElementVisible(entry.isIntersecting);
+        entry.isIntersecting && setIsElementVisible(true);
       },
       {
         threshold: 0.2,

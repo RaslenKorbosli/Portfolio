@@ -30,8 +30,8 @@ const Img = styled.img`
   border-radius: 1.4rem;
   grid-row: 1/-3;
   transition: 0.6s ease-in-out;
-  transform: ${(props) =>
-    props.isElementVisible ? 'translateX(0)' : 'translateX(-10%)'};
+  /* transform: ${(props) =>
+    props.isElementVisible ? 'translateX(0)' : 'translateX(-10%)'}; */
   @media (max-width: 950px) {
     max-width: 80%;
   }

@@ -31,11 +31,13 @@ const Img = styled.img`
   transition: 0.6s ease-in-out;
   grid-row: -2 / span 2;
   grid-column: 2/-1;
+  align-self: flex-start;
 
   transform: ${(props) =>
     props.isElementVisible ? 'translateX(0)' : 'translateX(10%)'};
   @media (max-width: 950px) {
     grid-row: 1/2;
+    grid-column: 1/-1;
     max-width: 80%;
   }
 `;
