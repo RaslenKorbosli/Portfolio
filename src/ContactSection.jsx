@@ -11,14 +11,14 @@ const contactData = [
     contact: 'Email',
     contactInfo: 'raslen.korbosli01@gmail.com',
     href: 'mailto:raslen.korbosli01@gmail.com',
-    contactLogo: <IoLocationOutline />,
+    contactLogo: < MdOutlineEmail />,
   },
   {
     contactId: '125',
     contact: 'Phone',
     contactInfo: '(+216)22027872',
     href: 'tel:22027872',
-    contactLogo: <MdOutlineEmail />,
+    contactLogo: <  IoLocationOutline/>,
   },
   {
     contactId: '127',

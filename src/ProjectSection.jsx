@@ -50,7 +50,7 @@ function ProjectSection() {
       style={{ transform: isElementVisible && 'translateY(0%)' }}
     >
       <H1>Highlighting My Best Work</H1>
-      <P> Explore my portfolio and discover my creative project </P>
+      <P> Explore my portfolio and discover my creative projects </P>
       <ProjectShowcase />
     </ProjectSectionContainer>
   );

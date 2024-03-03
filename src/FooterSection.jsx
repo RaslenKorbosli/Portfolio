@@ -37,7 +37,7 @@ function FooterSection() {
   return (
     <Footer ref={myRef}>
       <FooterContainer isElementVisible={isElementVisible}>
-        <h2>Raslen.dev</h2>
+        <h2>Raslen.Dev</h2>
         <SocialLink color={'#c8cad3'} /> <br />
         <p>Copyright © {year}. All rights are reserved</p>
       </FooterContainer>
