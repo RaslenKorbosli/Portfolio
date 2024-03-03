@@ -107,7 +107,13 @@ function Header() {
   return (
     <NavBar>
       <Logo href="#home">
-        <Link to={'home'} smooth={true} duration={500} spy={true}>
+        <Link
+          to={'home'}
+          smooth={true}
+          duration={500}
+          spy={true}
+          role="back to top page"
+        >
           Raslen.dev
         </Link>
       </Logo>

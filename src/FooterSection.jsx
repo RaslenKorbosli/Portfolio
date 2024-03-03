@@ -15,8 +15,6 @@ const FooterContainer = styled.div`
   max-width: 100rem;
   margin: 0 auto;
   transition: 0.6s ease-in-out;
-
-  opacity: ${(props) => (props.isElementVisible ? 1 : 0)};
 `;
 const year = new Date().getFullYear();
 function FooterSection() {
@@ -38,6 +36,8 @@ function FooterSection() {
       <FooterContainer
         style={{
           transform: isElementVisible ? 'translateY(0)' : 'translateY(30%)',
+
+          opacity: isElementVisible ? 1 : 0,
         }}
       >
         <h2>Raslen.Dev</h2>
