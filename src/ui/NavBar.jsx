@@ -87,7 +87,6 @@ const NavData = [
   { link: 'Contact', href: 'contact' },
 ];
 const MenuContainer = styled.div`
-  display: ${(props) => (props.isOpen ? 'flex' : 'hidden')};
   position: absolute; /* Required for animation positioning */
   top: 0;
   position: absolute;
@@ -98,8 +97,6 @@ const MenuContainer = styled.div`
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease-in-out; /* Transition for smooth animation */
-  transform: ${(props) =>
-    props.isOpen ? 'translateX(0%)' : 'translateX(-100%)'};
 `;
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -119,7 +116,12 @@ function Header() {
       </DropMenu>
 
       <DropDownMenu>
-        <MenuContainer isOpen={isOpen}>
+        <MenuContainer
+          style={{
+            transform: isOpen ? 'translateX(0%)' : 'translateX(-100%)',
+            display: isOpen ? 'flex' : 'hidden',
+          }}
+        >
           <UlMenu>
             {NavData.map((data, i) => (
               <LiMenu key={i} onClick={handleClick}>

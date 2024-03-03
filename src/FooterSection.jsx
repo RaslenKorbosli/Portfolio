@@ -15,8 +15,7 @@ const FooterContainer = styled.div`
   max-width: 100rem;
   margin: 0 auto;
   transition: 0.6s ease-in-out;
-  transform: ${(props) =>
-    props.isElementVisible ? 'translateY(0)' : 'translateY(30%)'};
+
   opacity: ${(props) => (props.isElementVisible ? 1 : 0)};
 `;
 const year = new Date().getFullYear();
@@ -36,7 +35,11 @@ function FooterSection() {
   }, [isElementVisible]);
   return (
     <Footer ref={myRef}>
-      <FooterContainer isElementVisible={isElementVisible}>
+      <FooterContainer
+        style={{
+          transform: isElementVisible ? 'translateY(0)' : 'translateY(30%)',
+        }}
+      >
         <h2>Raslen.Dev</h2>
         <SocialLink color={'#c8cad3'} /> <br />
         <p>Copyright © {year}. All rights are reserved</p>

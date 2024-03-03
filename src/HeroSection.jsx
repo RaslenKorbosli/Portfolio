@@ -33,9 +33,6 @@ const Img = styled.img`
   grid-row: -2 / span 2;
   grid-column: 2/-1;
   align-self: flex-start;
-
-  transform: ${(props) =>
-    props.isElementVisible ? 'translateX(0)' : 'translateX(10%)'};
   @media (max-width: 1000px) {
     grid-row: 1/2;
     grid-column: 1/-1;
@@ -52,7 +49,7 @@ const Content = styled.div`
   padding: 0 4.8rem;
   margin: 0 auto;
   transition: 0.6s ease-in;
-  opacity: ${(props) => (props.isElementVisible ? 1 : 0)};
+
   @media (max-width: 1000px) {
     padding-top: 4.6rem;
     grid-template-columns: 1fr;
@@ -72,9 +69,8 @@ const HeroText = styled.div`
   transition: 0.6s ease-in-out;
   display: flex;
   flex-direction: column;
-  transform: ${(props) =>
-    props.isElementVisible ? 'translateX(0)' : 'translateX(-20%)'};
-  @media (max-width: 950px) {
+
+  @media (max-width: 1000px) {
     align-self: self-start;
     align-items: center;
   }
@@ -93,8 +89,16 @@ function HeroSection() {
   }, [isElementVisible]);
   return (
     <Container id="home" ref={myRef}>
-      <Content isElementVisible={isElementVisible}>
-        <HeroText isElementVisible={isElementVisible}>
+      <Content
+        style={{
+          opacity: isElementVisible ? '1' : '0',
+        }}
+      >
+        <HeroText
+          style={{
+            transform: isElementVisible ? 'translateX(0)' : 'translateX(-20%)',
+          }}
+        >
           <H1>Front End React Developer</H1>{' '}
           <p>
             Hi, Im Raslen Korbosli, 19 Years Old From Tunisia ,A passionate
@@ -103,7 +107,13 @@ function HeroSection() {
           <SocialLink color={'#147efb'} />
         </HeroText>
 
-        <Img src={img} alt="" isElementVisible={isElementVisible} />
+        <Img
+          src={img}
+          alt=""
+          style={{
+            transform: isElementVisible ? 'translateX(0)' : 'translateX(10%)',
+          }}
+        />
         <TechSkills isElementVisible={isElementVisible} />
       </Content>
     </Container>

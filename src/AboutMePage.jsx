@@ -29,8 +29,7 @@ const Img = styled.img`
   border-radius: 1.4rem;
   grid-row: 1/-3;
   transition: 0.6s ease-in-out;
-  transform: ${(props) =>
-    props.isElementVisible ? 'translateX(0)' : 'translateX(-10%)'};
+
   @media (max-width: 950px) {
     max-width: 80%;
   }
@@ -48,8 +47,6 @@ const AboutMeParagraph = styled.p`
   line-height: 1.4;
   grid-column: -2 /-1;
   transition: 0.6s ease-in-out;
-  transform: ${(props) =>
-    props.isElementVisible ? 'translateY(0)' : 'translateY(30%)'};
 
   @media (max-width: 950px) {
     font-size: 1.6rem;
@@ -66,8 +63,7 @@ const H2 = styled.h1`
   align-self: self-end;
   margin-bottom: 2.6rem;
   transition: 0.6s ease-in-out;
-  transform: ${(props) =>
-    props.isElementVisible ? 'translateY(0)' : 'translateY(-100%)'};
+
   @media (max-width: 770px) {
     grid-column: 1/-1;
     text-align: center;
@@ -93,14 +89,28 @@ function AboutMePage() {
   }, [isElementVisible]);
   return (
     <AboutMeSection id="about" ref={myRef}>
-      <AboutMe isElementVisible={isElementVisible}>
+      <AboutMe>
         <Img
-          isElementVisible={isElementVisible}
           src={img}
           alt="a developer desktop"
+          style={{
+            transform: isElementVisible ? 'translateX(0%)' : 'translateX(-30%)',
+          }}
         />
-        <H2 isElementVisible={isElementVisible}>LET ME INTRODUCE MYSELF</H2>
-        <AboutMeParagraph isElementVisible={isElementVisible}>
+        <H2
+          style={{
+            transform: isElementVisible
+              ? 'translateY(0%)'
+              : 'translateY(-100%)',
+          }}
+        >
+          LET ME INTRODUCE MYSELF
+        </H2>
+        <AboutMeParagraph
+          style={{
+            transform: isElementVisible ? 'translateY(0%)' : 'translateY(10%)',
+          }}
+        >
           I&apos;m Raslen, a web developer from Tunisia with a passion for
           creating modern and engaging websites. I&apos;m currently expanding my
           skills by learning React, and I&apos;m always looking for new ways to
