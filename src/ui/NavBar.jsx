@@ -84,6 +84,7 @@ const NavData = [
   { link: 'Home', href: 'home' },
   { link: 'About', href: 'about' },
   { link: 'Project', href: 'projects' },
+  { link: 'Contributions', href: 'Contributions' },
   { link: 'Contact', href: 'contact' },
 ];
 const MenuContainer = styled.div`

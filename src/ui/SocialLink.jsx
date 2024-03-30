@@ -5,11 +5,14 @@ import styled from 'styled-components';
 
 const links = [
   {
-    link: 'https://www.instagram.com/raslen__korbosli/',
+    link: '',
     logo: <FaInstagram />,
   },
-  { link: 'www.github.com', logo: <FaGithub /> },
-  { link: 'www.linkedin.com', logo: <FaLinkedin /> },
+  { link: 'https://github.com/RaslenKorbosli', logo: <FaGithub /> },
+  {
+    link: 'https://www.linkedin.com/in/raslen-korbosli-2408b3301/',
+    logo: <FaLinkedin />,
+  },
 ];
 const LinksLogo = styled.ul`
   display: flex;
@@ -30,7 +33,9 @@ function SocialLink({ color }) {
       {links.map((link) => (
         <Li key={link.link} color={color}>
           {' '}
-          <a href="">{link.logo}</a>{' '}
+          <a href={link.link} target="_blanc">
+            {link.logo}
+          </a>{' '}
         </Li>
       ))}
     </LinksLogo>

@@ -5,6 +5,7 @@ import AboutMePage from './AboutMePage';
 import ProjectSection from './ProjectSection';
 import ContactSection from './ContactSection';
 import FooterSection from './FooterSection';
+import Contributions from './ui/Contributions';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <HeroSection />
       <AboutMePage />
       <ProjectSection />
+      <Contributions />
       <ContactSection />
       <FooterSection />
     </>

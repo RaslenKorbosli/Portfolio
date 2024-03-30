@@ -11,14 +11,14 @@ const contactData = [
     contact: 'Email',
     contactInfo: 'raslen.korbosli01@gmail.com',
     href: 'mailto:raslen.korbosli01@gmail.com',
-    contactLogo: < MdOutlineEmail />,
+    contactLogo: <MdOutlineEmail />,
   },
   {
     contactId: '125',
     contact: 'Phone',
     contactInfo: '(+216)22027872',
     href: 'tel:22027872',
-    contactLogo: <  IoLocationOutline/>,
+    contactLogo: <IoLocationOutline />,
   },
   {
     contactId: '127',
@@ -51,14 +51,17 @@ const Link = styled.a`
 `;
 const ContactContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  max-width: 100vw;
+  grid-template-columns: repeat(3, minmax(200px, 400px));
+  justify-content: center;
   gap: 20rem;
   padding: 8.2rem 2.4rem;
-  transition: 0.6s ease-in-out;
+  transition: 0.6s ease-in-out all;
   align-content: center;
-  max-width: 120rem;
+
   margin: 0 auto;
   opacity: 0;
+  background-color: var(--color-main-background);
   @media (max-width: 770px) {
     grid-template-columns: minmax(200px, 1fr);
     font-size: 1.8rem;
