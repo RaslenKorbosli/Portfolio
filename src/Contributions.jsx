@@ -9,6 +9,9 @@ const ContributionsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  @media (max-width: 770px) {
+    padding: 7.2rem 2.4rem;
+  }
 `;
 const H1 = styled.h1`
   font-size: 3.8rem;

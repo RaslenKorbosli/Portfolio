@@ -57,7 +57,7 @@ const ContactContainer = styled.div`
   justify-content: center;
   gap: 20rem;
   padding: 8.2rem 2.4rem;
-
+  opacity: 0;
   align-content: center;
   margin: 0 auto;
   background-color: var(--color-main-background);

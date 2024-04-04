@@ -21,12 +21,13 @@ const Copyright = styled.p`
   font-size: 1.4rem;
   @media (max-width: 770px) {
     font-size: 1.4rem;
+    margin-top: 2.4rem;
   }
 `;
 const FooterLinks = styled.div`
   @media (max-width: 770px) {
     display: flex;
-    justify-content: space-between;
+
     flex-wrap: wrap;
     align-items: center;
     gap: 2rem;
