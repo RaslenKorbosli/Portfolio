@@ -1,11 +1,15 @@
 import styled from 'styled-components';
+import { BsFillMoonStarsFill } from 'react-icons/bs';
+import { FiSun } from 'react-icons/fi';
 import { IoMenu } from 'react-icons/io5';
-
 import DropDownMenu from './DropDownMenu';
 import { IoClose } from 'react-icons/io5';
 import { Link } from 'react-scroll';
 import { useState } from 'react';
-const NavBar = styled.nav`
+import { useDispatch, useSelector } from 'react-redux';
+import { activatedDarkMode } from '../darkModeSlice';
+
+const NavBar = styled.div`
   display: flex;
   width: 100vw;
   background-color: #fff;
@@ -32,8 +36,10 @@ const Li = styled.li`
 `;
 
 const Logo = styled.a`
+  display: flex;
   font-size: 2.4rem;
   font-weight: 600;
+  position: relative;
   &:hover {
     color: var(--color-hover);
   }
@@ -45,7 +51,7 @@ const Logo = styled.a`
   }
 `;
 const Ul = styled.ul`
-  @media (max-width: 700px) {
+  @media (max-width: 880px) {
     display: none;
   }
 `;
@@ -69,7 +75,7 @@ const DropMenu = styled.div`
   display: none;
   font-size: 2.8rem;
   z-index: 100;
-  @media (max-width: 700px) {
+  @media (max-width: 880px) {
     display: flex;
     align-items: center;
 
@@ -90,7 +96,6 @@ const NavData = [
 const MenuContainer = styled.div`
   position: absolute; /* Required for animation positioning */
   top: 0;
-  position: absolute;
   left: 0; /* Adjust based on your layout */
   width: 100%; /* Adjust based on your layout */
   height: 100vh; /* Adjust based on your layout */
@@ -98,73 +103,113 @@ const MenuContainer = styled.div`
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease-in-out; /* Transition for smooth animation */
+  @media (max-width: 880px) {
+    display: block;
+  }
 `;
+const LightModeButton = styled.button`
+  background: none;
+  cursor: pointer;
+  border: none;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4rem;
+  &:hover {
+    color: var(--color-hover);
+  }
+`;
+
 function Header() {
+  const dispatch = useDispatch();
+  const darkModeToggle = useSelector((store) => store.darkMode.darkMode);
+  const [darkMode, setDarkMode] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  function handleDarkModeClick() {
+    setDarkMode((darkMode) => !darkMode);
+    dispatch(activatedDarkMode(!darkMode));
+  }
+  // useEffect(() => {
+  //   dispatch(activatedDarkMode(darkMode));
+  // }, [dispatch, darkMode]);
   function handleClick() {
     setIsOpen((open) => !open);
   }
-
   return (
-    <NavBar>
-      <Logo href="#home">
-        <Link
-          to={'home'}
-          smooth={true}
-          duration={500}
-          spy={true}
-          role="back to top page"
-        >
-          Raslen.dev
-        </Link>
-      </Logo>
-      <DropMenu onClick={handleClick}>
-        {isOpen ? <IoClose /> : <IoMenu />}
-      </DropMenu>
-
-      <DropDownMenu>
-        <MenuContainer
-          style={{
-            transform: isOpen ? 'translateX(0%)' : 'translateX(-100%)',
-            display: isOpen ? 'flex' : 'hidden',
-          }}
-        >
-          <UlMenu>
-            {NavData.map((data, i) => (
-              <LiMenu key={i} onClick={handleClick}>
-                <Link
-                  to={data.href}
-                  smooth={true}
-                  duration={500}
-                  spy={true}
-                  offset={-50}
-                  onClick={handleClick}
-                >
-                  {data.link}
-                </Link>
-                {/* <a href={data.href}>{data.link} </a> */}
-              </LiMenu>
-            ))}
-          </UlMenu>
-        </MenuContainer>
-      </DropDownMenu>
-
-      <Ul>
-        {NavData.map((data, i) => (
-          <Li key={i}>
+    <nav className={darkModeToggle && 'dark'}>
+      <NavBar className=" dark:bg-neutral-800 dark:text-neutral-200 transition-all">
+        <div style={{ display: 'flex', gap: '2rem' }}>
+          <Logo href="#home">
             <Link
-              to={data.href}
+              to={'home'}
               smooth={true}
               duration={500}
               spy={true}
-              offset={-80}
+              role="back to top page"
             >
-              {data.link}
+              Raslen.dev
             </Link>
-          </Li>
-        ))}
-      </Ul>
-    </NavBar>
+          </Logo>
+          <LightModeButton
+            style={
+              {
+                // color: darkMode ? 'var(--color-main-background)' : '',
+              }
+            }
+            className="dark:text-neutral-200"
+            onClick={() => handleDarkModeClick()}
+          >
+            {darkMode ? <BsFillMoonStarsFill /> : <FiSun />}
+          </LightModeButton>
+        </div>
+        <DropMenu onClick={handleClick} className=" dark:hover:bg-zinc-600">
+          {isOpen ? <IoClose /> : <IoMenu />}
+        </DropMenu>
+        <DropDownMenu>
+          <MenuContainer
+            style={{
+              transform: isOpen ? 'translateX(0%)' : 'translateX(-100%)',
+              display: isOpen ? 'flex' : 'hidden',
+            }}
+            className="dark:bg-zinc-800"
+          >
+            <UlMenu>
+              {NavData.map((data, i) => (
+                <LiMenu key={i} onClick={handleClick}>
+                  <Link
+                    to={data.href}
+                    smooth={true}
+                    duration={500}
+                    spy={true}
+                    offset={-50}
+                    onClick={handleClick}
+                  >
+                    {data.link}
+                  </Link>
+                  {/* <a href={data.href}>{data.link} </a> */}
+                </LiMenu>
+              ))}
+            </UlMenu>
+          </MenuContainer>
+        </DropDownMenu>
+        <Ul>
+          {NavData.map((data, i) => (
+            <Li key={i}>
+              <Link
+                to={data.href}
+                smooth={true}
+                duration={500}
+                spy={true}
+                offset={-80}
+              >
+                {data.link}
+              </Link>
+            </Li>
+          ))}
+        </Ul>{' '}
+      </NavBar>
+    </nav>
   );
 }
 

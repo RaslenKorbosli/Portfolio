@@ -3,7 +3,8 @@ import img from '../images/profilePhoto.webp';
 import TechSkills from './ui/TechSkills';
 import { useEffect, useRef, useState } from 'react';
 import SocialLink from './ui/SocialLink';
-const Container = styled.section`
+import { useSelector } from 'react-redux';
+const Container = styled.div`
   height: 100vh;
   display: flex;
   align-items: center;
@@ -48,7 +49,7 @@ const Content = styled.div`
   max-width: 100rem;
   padding: 0 4.8rem;
   margin: 0 auto;
-  transition: 0.6s ease-in;
+  transition: opacity 0.6s ease-in;
 
   @media (max-width: 1000px) {
     padding-top: 4.6rem;
@@ -66,7 +67,7 @@ const Content = styled.div`
 const HeroText = styled.div`
   max-width: 80%;
   font-size: 1.8rem;
-  transition: 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out;
   display: flex;
   flex-direction: column;
 
@@ -78,45 +79,56 @@ const HeroText = styled.div`
 
 function HeroSection() {
   const myRef = useRef();
+  const darkModeToggle = useSelector((store) => store.darkMode.darkMode);
   const [isElementVisible, setIsElementVisible] = useState(false);
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       const entry = entries[0];
-
       entry.isIntersecting && setIsElementVisible(true);
     });
     observer.observe(myRef.current);
   }, [isElementVisible]);
   return (
-    <Container id="home" ref={myRef}>
-      <Content
-        style={{
-          opacity: isElementVisible ? '1' : '0',
-        }}
+    <section className={darkModeToggle ? 'dark' : ''}>
+      <Container
+        id="home"
+        ref={myRef}
+        className=" dark:bg-neutral-900 dark:text-neutral-200 transition-all"
       >
-        <HeroText
+        <Content
           style={{
-            transform: isElementVisible ? 'translateX(0)' : 'translateX(-20%)',
+            opacity: isElementVisible ? '1' : '0',
           }}
         >
-          <H1>Front End React Developer</H1>{' '}
-          <p>
-            Hi, Im Raslen Korbosli, 19 Years Old From Tunisia ,A passionate
-            Front-end React Developer
-          </p>
-          <SocialLink color={'#147efb'} />
-        </HeroText>
+          <HeroText
+            style={{
+              transform: isElementVisible
+                ? 'translateX(0)'
+                : 'translateX(-20%)',
+            }}
+          >
+            <H1 className="">
+              Front End React{' '}
+              <span className="dark:text-[#148bfbdb]"> Developer</span>{' '}
+            </H1>{' '}
+            <p className="dark:text-neutral-300">
+              Hi, Im Raslen Korbosli, 19 Years Old From Tunisia ,A passionate
+              Front-end React Developer
+            </p>
+            <SocialLink color={'#147efb'} />
+          </HeroText>
 
-        <Img
-          src={img}
-          alt=""
-          style={{
-            transform: isElementVisible ? 'translateX(0)' : 'translateX(10%)',
-          }}
-        />
-        <TechSkills isElementVisible={isElementVisible} />
-      </Content>
-    </Container>
+          <Img
+            src={img}
+            alt=""
+            style={{
+              transform: isElementVisible ? 'translateX(0)' : 'translateX(10%)',
+            }}
+          />
+          <TechSkills isElementVisible={isElementVisible} />
+        </Content>
+      </Container>
+    </section>
   );
 }
 

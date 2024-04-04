@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import img from '../images/pc-desktop.webp';
 import { useEffect, useRef, useState } from 'react';
-const AboutMeSection = styled.section`
+import { useSelector } from 'react-redux';
+const AboutMeSection = styled.div`
   align-items: center;
   padding: var(--main-padding-layout);
 `;
@@ -46,7 +47,7 @@ const AboutMeParagraph = styled.p`
   padding-top: 2.8rem;
   line-height: 1.4;
   grid-column: -2 /-1;
-  transition: 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out;
 
   @media (max-width: 950px) {
     font-size: 1.6rem;
@@ -59,10 +60,10 @@ const AboutMeParagraph = styled.p`
   }
 `;
 const H2 = styled.h1`
-  font-size: 2.8rem;
+  font-size: 3.2rem;
   align-self: self-end;
   margin-bottom: 2.6rem;
-  transition: 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out;
 
   @media (max-width: 770px) {
     grid-column: 1/-1;
@@ -74,6 +75,7 @@ const H2 = styled.h1`
 function AboutMePage() {
   const myRef = useRef();
   const [isElementVisible, setIsElementVisible] = useState(false);
+  const darkModeToggle = useSelector((store) => store.darkMode.darkMode);
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -88,38 +90,50 @@ function AboutMePage() {
     observer.observe(myRef.current);
   }, [isElementVisible]);
   return (
-    <AboutMeSection id="about" ref={myRef}>
-      <AboutMe>
-        <Img
-          src={img}
-          alt="a developer desktop"
-          style={{
-            transform: isElementVisible ? 'translateX(0%)' : 'translateX(-30%)',
-          }}
-        />
-        <H2
-          style={{
-            transform: isElementVisible
-              ? 'translateY(0%)'
-              : 'translateY(-100%)',
-          }}
-        >
-          LET ME INTRODUCE MYSELF
-        </H2>
-        <AboutMeParagraph
-          style={{
-            transform: isElementVisible ? 'translateY(0%)' : 'translateY(10%)',
-          }}
-        >
-          I&apos;m Raslen, a web developer from Tunisia with a passion for
-          creating modern and engaging websites. I&apos;m currently expanding my
-          skills by learning React, and I&apos;m always looking for new ways to
-          improve and stay up-to-date in the ever-evolving world of web
-          development. My goal is to become a full-stack developer and
-          contribute to building innovative and user-friendly web experiences.
-        </AboutMeParagraph>{' '}
-      </AboutMe>
-    </AboutMeSection>
+    <section className={darkModeToggle ? 'dark' : ''}>
+      <AboutMeSection
+        id="about"
+        ref={myRef}
+        className="dark:bg-zinc-900 transition-all "
+      >
+        <AboutMe>
+          <Img
+            src={img}
+            alt="a developer desktop"
+            style={{
+              transform: isElementVisible
+                ? 'translateX(0%)'
+                : 'translateX(-30%)',
+            }}
+          />
+          <H2
+            style={{
+              transform: isElementVisible
+                ? 'translateY(0%)'
+                : 'translateY(-100%)',
+            }}
+            className="dark:text-neutral-200"
+          >
+            LET ME INTRODUCE MYSELF
+          </H2>
+          <AboutMeParagraph
+            style={{
+              transform: isElementVisible
+                ? 'translateY(0%)'
+                : 'translateY(10%)',
+            }}
+            className="dark:text-neutral-300"
+          >
+            I&apos;m Raslen, a web developer from Tunisia with a passion for
+            creating modern and engaging websites. I&apos;m currently expanding
+            my skills by learning React, and I&apos;m always looking for new
+            ways to improve and stay up-to-date in the ever-evolving world of
+            web development. My goal is to become a full-stack developer and
+            contribute to building innovative and user-friendly web experiences.
+          </AboutMeParagraph>{' '}
+        </AboutMe>
+      </AboutMeSection>
+    </section>
   );
 }
 

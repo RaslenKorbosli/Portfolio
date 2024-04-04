@@ -1,5 +1,6 @@
 import Contact from './ui/Contact';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 import { IoLocationOutline } from 'react-icons/io5';
 import { MdOutlineEmail } from 'react-icons/md';
 import { FiPhone } from 'react-icons/fi';
@@ -37,7 +38,7 @@ const H2 = styled.h2`
   }
 `;
 const Logo = styled.span`
-  font-size: 3.6rem;
+  font-size: 3.8rem;
   @media (max-width: 770px) {
     font-size: 2.8rem;
   }
@@ -54,13 +55,13 @@ const ContactContainer = styled.div`
   max-width: 100vw;
   grid-template-columns: repeat(3, minmax(200px, 400px));
   justify-content: center;
-  gap: 20rem;
+
   padding: 8.2rem 2.4rem;
-  transition: 0.6s ease-in-out all;
+
   align-content: center;
 
   margin: 0 auto;
-  opacity: 0;
+
   background-color: var(--color-main-background);
   @media (max-width: 770px) {
     grid-template-columns: minmax(200px, 1fr);
@@ -74,6 +75,7 @@ const ContactBox = styled.div`
   text-align: center;
 `;
 function ContactSection() {
+  const darkModeToggle = useSelector((store) => store.darkMode.darkMode);
   const myRef = useRef();
   const [isElementVisible, setIsElementVisible] = useState(false);
   useEffect(() => {
@@ -90,26 +92,40 @@ function ContactSection() {
     observer.observe(myRef.current);
   }, [isElementVisible]);
   return (
-    <ContactContainer
-      id="contact"
-      ref={myRef}
+    <section
+      className={darkModeToggle ? 'dark' : ''}
       style={{
-        gap: isElementVisible && '2rem',
-        opacity: isElementVisible && '1',
+        transition: '0.6s all ease-in-out',
+        gap: isElementVisible ? '2rem' : '20rem',
+        opacity: isElementVisible ? '1' : '0',
       }}
     >
-      {contactData.map((contact) => (
-        <Contact key={contact.contactId}>
-          <ContactBox>
-            <Logo> {contact.contactLogo}</Logo>
-            <H2>{contact.contact}</H2>
-            <Link href={contact.href || null} target="blanc">
-              {contact.contactInfo}
-            </Link>
-          </ContactBox>
-        </Contact>
-      ))}
-    </ContactContainer>
+      <ContactContainer
+        id="contact"
+        ref={myRef}
+        style={{
+          gap: isElementVisible && '2rem',
+          opacity: isElementVisible && '1',
+        }}
+        className="dark:bg-neutral-900 dark:text-neutral-200 transition-all"
+      >
+        {contactData.map((contact) => (
+          <Contact key={contact.contactId}>
+            <ContactBox>
+              <Logo> {contact.contactLogo}</Logo>
+              <H2>{contact.contact}</H2>
+              <Link
+                href={contact.href || null}
+                target="blanc"
+                className="dark:text-neutral-300"
+              >
+                {contact.contactInfo}
+              </Link>
+            </ContactBox>
+          </Contact>
+        ))}
+      </ContactContainer>
+    </section>
   );
 }
 

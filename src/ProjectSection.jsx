@@ -2,17 +2,16 @@ import styled from 'styled-components';
 
 import ProjectShowcase from './ui/ProjectsShowcase';
 import { useEffect, useRef, useState } from 'react';
-const ProjectSectionContainer = styled.section`
+import { useSelector } from 'react-redux';
+const ProjectSectionContainer = styled.div`
   background-color: var(--color-main-background);
   padding: var(--main-padding-layout);
-  transform: translateY(10%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: 0.6s ease-out;
 `;
 const H1 = styled.h1`
-  font-size: 3.6rem;
+  font-size: 3.8rem;
   padding-bottom: 1.4rem;
   @media (max-width: 770px) {
     font-size: 2.8rem;
@@ -20,15 +19,21 @@ const H1 = styled.h1`
   }
 `;
 const P = styled.p`
-  font-size: 1.8rem;
+  font-size: 2rem;
   padding-bottom: 1.6rem;
   @media (max-width: 770px) {
     font-size: 1.4rem;
     text-align: center;
   }
 `;
+const ProjectContainer = styled.div`
+  text-align: center;
+  transform: translateY(10%);
+  transition: transform 0.6s ease-out;
+`;
 
 function ProjectSection() {
+  const darkModeToggle = useSelector((store) => store.darkMode.darkMode);
   const myRef = useRef();
   const [isElementVisible, setIsElementVisible] = useState(false);
   useEffect(() => {
@@ -44,15 +49,21 @@ function ProjectSection() {
     observer.observe(myRef.current);
   }, [isElementVisible]);
   return (
-    <ProjectSectionContainer
-      ref={myRef}
-      id="projects"
-      style={{ transform: isElementVisible && 'translateY(0%)' }}
-    >
-      <H1>Highlighting My Best Work</H1>
-      <P> Explore my portfolio and discover my creative projects </P>
-      <ProjectShowcase />
-    </ProjectSectionContainer>
+    <section className={darkModeToggle ? 'dark' : ''}>
+      <ProjectSectionContainer
+        className=" dark:bg-neutral-900 dark:text-neutral-200 transition-all"
+        ref={myRef}
+        id="projects"
+      >
+        <ProjectContainer
+          style={{ transform: isElementVisible && 'translateY(0%)' }}
+        >
+          <H1>Highlighting My Best Work</H1>
+          <P> Explore my portfolio and discover my creative projects </P>
+          <ProjectShowcase />
+        </ProjectContainer>
+      </ProjectSectionContainer>
+    </section>
   );
 }
 

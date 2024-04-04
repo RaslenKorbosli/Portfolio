@@ -66,6 +66,7 @@ const Links = styled.div`
   display: flex;
   gap: 2.6rem;
   margin-top: 2rem;
+  font-size: 1.7rem;
   align-items: center;
   justify-content: center;
   @media (max-width: 950px) {
@@ -95,6 +96,9 @@ const H2 = styled.h2`
   flex-direction: column;
   gap: 1rem;
 `;
+const P = styled.p`
+  font-size: 1.8rem;
+`;
 function ProjectShowcase() {
   return (
     <ProjectsContainer>
@@ -114,7 +118,7 @@ function ProjectShowcase() {
               </TechContainer>
             </div>
 
-            <p>{project.projectTitle}</p>
+            <P>{project.projectTitle}</P>
 
             <Links>
               <Link>

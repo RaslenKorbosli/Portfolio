@@ -7,7 +7,7 @@ const TachSkills = styled.ul`
   align-items: center;
   font-size: 2rem;
   font-weight: 400;
-  transition: 0.6s;
+  transition: transform 0.6s;
 `;
 const Span = styled.ul`
   font-size: 1.8rem;

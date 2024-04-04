@@ -5,7 +5,7 @@ import AboutMePage from './AboutMePage';
 import ProjectSection from './ProjectSection';
 import ContactSection from './ContactSection';
 import FooterSection from './FooterSection';
-import Contributions from './ui/Contributions';
+import Contributions from './Contributions';
 
 function App() {
   return (
