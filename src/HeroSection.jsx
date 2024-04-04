@@ -20,10 +20,10 @@ const H1 = styled.h1`
     font-size: 4.6rem;
   }
   @media (max-width: 770px) {
-    font-size: 3.2rem;
+    font-size: 3.6rem;
   }
   @media (max-width: 500px) {
-    font-size: 2.8rem;
+    font-size: 3rem;
   }
 `;
 const Img = styled.img`

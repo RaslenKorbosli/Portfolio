@@ -8,13 +8,29 @@ const Footer = styled.div`
   color: #fff;
 
   @media (max-width: 770px) {
-    padding-top: 2.4rem;
-    padding-bottom: 2.4rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    font-size: 1.8;
   }
 `;
 const FooterContainer = styled.div`
   max-width: 100rem;
   margin: 0 auto;
+`;
+const Copyright = styled.p`
+  font-size: 1.4rem;
+  @media (max-width: 770px) {
+    font-size: 1.4rem;
+  }
+`;
+const FooterLinks = styled.div`
+  @media (max-width: 770px) {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+  }
 `;
 const year = new Date().getFullYear();
 function FooterSection() {
@@ -45,9 +61,12 @@ function FooterSection() {
             transition: ' 0.6s ease-in-out',
           }}
         >
-          <h2>Raslen.Dev</h2>
-          <SocialLink color={'#c8cad3'} /> <br />
-          <p>Copyright © {year}. All rights are reserved</p>
+          {' '}
+          <FooterLinks>
+            <h2>Raslen.Dev</h2>
+            <SocialLink color={'#c8cad3'} margin={0} /> <br />
+          </FooterLinks>
+          <Copyright>Copyright © {year}. All rights are reserved</Copyright>
         </FooterContainer>
       </Footer>
     </footer>

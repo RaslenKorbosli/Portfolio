@@ -70,6 +70,7 @@ const H2 = styled.h1`
     text-align: center;
     align-self: self-start;
     /* margin-top: 2.4rem; */
+    font-size: 2.4rem;
   }
 `;
 function AboutMePage() {

@@ -14,7 +14,7 @@ const H1 = styled.h1`
   font-size: 3.8rem;
   padding-bottom: 1.4rem;
   @media (max-width: 770px) {
-    font-size: 2.8rem;
+    font-size: 2.4rem;
     text-align: center;
   }
 `;

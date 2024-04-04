@@ -16,10 +16,10 @@ const links = [
 ];
 const LinksLogo = styled.ul`
   display: flex;
+  align-items: center;
 
   gap: 1rem;
   font-size: 2.4rem;
-  margin: 1rem 0;
 `;
 const Li = styled.li`
   &:hover {
@@ -27,9 +27,9 @@ const Li = styled.li`
     color: ${(props) => props.color};
   }
 `;
-function SocialLink({ color }) {
+function SocialLink({ color, margin = 1 }) {
   return (
-    <LinksLogo>
+    <LinksLogo style={{ margin: `${margin}rem` }}>
       {links.map((link) => (
         <Li key={link.link} color={color}>
           {' '}
