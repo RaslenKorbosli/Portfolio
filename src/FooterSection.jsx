@@ -15,7 +15,6 @@ const Footer = styled.div`
 const FooterContainer = styled.div`
   max-width: 100rem;
   margin: 0 auto;
-  transition: transform 0.6s ease-in-out;
 `;
 const year = new Date().getFullYear();
 function FooterSection() {
@@ -29,7 +28,7 @@ function FooterSection() {
 
         entry.isIntersecting && setIsElementVisible(true);
       },
-      { threshold: 0.2 }
+      { threshold: 0.4 }
     );
     observer.observe(myRef.current);
   }, [isElementVisible]);
@@ -41,9 +40,9 @@ function FooterSection() {
       >
         <FooterContainer
           style={{
-            transform: isElementVisible ? 'translateY(0)' : 'translateY(30%)',
-
+            transform: isElementVisible ? 'translateY(0)' : 'translateY(25%)',
             opacity: isElementVisible ? 1 : 0,
+            transition: ' 0.6s ease-in-out',
           }}
         >
           <h2>Raslen.Dev</h2>

@@ -109,7 +109,7 @@ function HeroSection() {
           >
             <H1 className="">
               Front End React{' '}
-              <span className="dark:text-[#148bfbdb]"> Developer</span>{' '}
+              <span className="text-[#148bfbdb]"> Developer</span>{' '}
             </H1>{' '}
             <p className="dark:text-neutral-300">
               Hi, Im Raslen Korbosli, 19 Years Old From Tunisia ,A passionate

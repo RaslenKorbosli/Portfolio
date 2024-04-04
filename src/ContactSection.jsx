@@ -55,13 +55,11 @@ const ContactContainer = styled.div`
   max-width: 100vw;
   grid-template-columns: repeat(3, minmax(200px, 400px));
   justify-content: center;
-
+  gap: 20rem;
   padding: 8.2rem 2.4rem;
 
   align-content: center;
-
   margin: 0 auto;
-
   background-color: var(--color-main-background);
   @media (max-width: 770px) {
     grid-template-columns: minmax(200px, 1fr);
@@ -86,26 +84,20 @@ function ContactSection() {
         entry.isIntersecting && setIsElementVisible(true);
       },
       {
-        threshold: 0.2,
+        threshold: 0.4,
       }
     );
     observer.observe(myRef.current);
   }, [isElementVisible]);
   return (
-    <section
-      className={darkModeToggle ? 'dark' : ''}
-      style={{
-        transition: '0.6s all ease-in-out',
-        gap: isElementVisible ? '2rem' : '20rem',
-        opacity: isElementVisible ? '1' : '0',
-      }}
-    >
+    <section className={darkModeToggle ? 'dark' : ''}>
       <ContactContainer
         id="contact"
         ref={myRef}
         style={{
           gap: isElementVisible && '2rem',
           opacity: isElementVisible && '1',
+          transition: '0.6s ease',
         }}
         className="dark:bg-neutral-900 dark:text-neutral-200 transition-all"
       >

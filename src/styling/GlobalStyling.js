@@ -6,7 +6,7 @@ const GlobalStyling = createGlobalStyle`
   --color-grey-500: #6b7280;
   --color-grey-800: #1f2937;
   --color-blue-700: #0369a1;
-  --color-hover: #147efb;
+  --color-hover: #148bfbdb;
   --main-padding-layout: 7.2rem 4.6rem;
   
   
