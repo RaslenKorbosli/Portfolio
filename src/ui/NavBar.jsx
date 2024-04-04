@@ -124,7 +124,7 @@ const LightModeButton = styled.button`
 function Header() {
   const dispatch = useDispatch();
   const darkModeToggle = useSelector((store) => store.darkMode.darkMode);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(darkModeToggle);
   const [isOpen, setIsOpen] = useState(false);
   function handleDarkModeClick() {
     setDarkMode((darkMode) => !darkMode);
@@ -160,7 +160,7 @@ function Header() {
             className="dark:text-neutral-200"
             onClick={() => handleDarkModeClick()}
           >
-            {darkMode ? <BsFillMoonStarsFill /> : <FiSun />}
+            {darkModeToggle ? <BsFillMoonStarsFill /> : <FiSun />}
           </LightModeButton>
         </div>
         <DropMenu onClick={handleClick} className=" dark:hover:bg-zinc-600">

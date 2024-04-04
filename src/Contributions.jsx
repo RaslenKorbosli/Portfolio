@@ -34,13 +34,7 @@ function Contributions() {
     observer.observe(myRef.current);
   }, [isElementVisible]);
   return (
-    <section
-      style={{
-        transition: 'opacity 0.6s ease-in-out',
-        opacity: isElementVisible ? 1 : 0,
-      }}
-      className={darkModeToggle ? 'dark' : ''}
-    >
+    <section className={darkModeToggle ? 'dark' : ''}>
       <ContributionsContainer
         ref={myRef}
         id="Contributions"
@@ -49,7 +43,6 @@ function Contributions() {
         <H1>GitHub Contributions </H1>
         <GitHubCalendar
           username="raslenkorbosli"
-          style={{ color: 'inherit', fontWeight: 500 }}
           blockMargin={8}
           blockRadius={4}
           blockSize={16}
@@ -59,6 +52,12 @@ function Contributions() {
           }}
           colorScheme={'light'}
           fontSize={18}
+          style={{
+            color: 'inherit',
+            fontWeight: 500,
+            transition: 'opacity 0.6s ease-in-out',
+            opacity: isElementVisible ? 1 : 0,
+          }}
         />
       </ContributionsContainer>
     </section>
