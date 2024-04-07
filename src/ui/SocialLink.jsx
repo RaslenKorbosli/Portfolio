@@ -7,11 +7,17 @@ const links = [
   {
     link: '',
     logo: <FaInstagram />,
+    platform: 'Instagram',
   },
-  { link: 'https://github.com/RaslenKorbosli', logo: <FaGithub /> },
+  {
+    link: 'https://github.com/RaslenKorbosli',
+    logo: <FaGithub />,
+    platform: 'Github',
+  },
   {
     link: 'https://www.linkedin.com/in/raslen-korbosli-2408b3301/',
     logo: <FaLinkedin />,
+    platform: 'Linkedin',
   },
 ];
 const LinksLogo = styled.ul`
@@ -32,10 +38,13 @@ function SocialLink({ color, margin = 1 }) {
     <LinksLogo style={{ margin: `${margin}rem` }}>
       {links.map((link) => (
         <Li key={link.link} color={color}>
-          {' '}
-          <a href={link.link} target="_blanc">
+          <a
+            href={link.link}
+            target="_blanc"
+            aria-label={`${link.platform} link`}
+          >
             {link.logo}
-          </a>{' '}
+          </a>
         </Li>
       ))}
     </LinksLogo>

@@ -28,7 +28,7 @@ function TechSkills({ isElementVisible }) {
         transform: isElementVisible ? 'translateY(0)' : 'translateY(40%)',
       }}
     >
-      <Span> skill stack |</Span>
+      <Span aria-label="skill stack"> skill stack |</Span>
       <ul>
         {skills.map((skillItem, i) => (
           <Skill skillItem={skillItem} key={i} />

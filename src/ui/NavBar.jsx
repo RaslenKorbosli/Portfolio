@@ -146,17 +146,13 @@ function Header() {
               smooth={true}
               duration={500}
               spy={true}
-              role="back to top page"
+              aria-label="website logo"
             >
               Raslen.dev
             </Link>
           </Logo>
           <LightModeButton
-            style={
-              {
-                // color: darkMode ? 'var(--color-main-background)' : '',
-              }
-            }
+            aria-label="dark mode button"
             className="dark:text-neutral-200"
             onClick={() => handleDarkModeClick()}
           >
