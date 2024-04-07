@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import img from '../images/pc-desktop.webp';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { useIntersectionObserver } from './hooks/useIntersectionObserver';
 const AboutMeSection = styled.div`
   align-items: center;
   padding: var(--main-padding-layout);
@@ -75,21 +76,8 @@ const H2 = styled.h1`
 `;
 function AboutMePage() {
   const myRef = useRef();
-  const [isElementVisible, setIsElementVisible] = useState(false);
+  const isElementVisible = useIntersectionObserver(myRef, 0.1);
   const darkModeToggle = useSelector((store) => store.darkMode.darkMode);
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-
-        entry.isIntersecting && setIsElementVisible(true);
-      },
-      {
-        threshold: 0.1,
-      }
-    );
-    observer.observe(myRef.current);
-  }, [isElementVisible]);
   return (
     <section className={darkModeToggle ? 'dark' : ''}>
       <AboutMeSection

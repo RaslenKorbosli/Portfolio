@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import img from '../images/profilePhoto.webp';
 import TechSkills from './ui/TechSkills';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import SocialLink from './ui/SocialLink';
 import { useSelector } from 'react-redux';
+import { useIntersectionObserver } from './hooks/useIntersectionObserver';
 const Container = styled.div`
   height: 100vh;
   display: flex;
@@ -80,14 +81,7 @@ const HeroText = styled.div`
 function HeroSection() {
   const myRef = useRef();
   const darkModeToggle = useSelector((store) => store.darkMode.darkMode);
-  const [isElementVisible, setIsElementVisible] = useState(false);
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      entry.isIntersecting && setIsElementVisible(true);
-    });
-    observer.observe(myRef.current);
-  }, [isElementVisible]);
+  const isElementVisible = useIntersectionObserver(myRef, 0);
   return (
     <section className={darkModeToggle ? 'dark' : ''}>
       <Container
@@ -122,7 +116,7 @@ function HeroSection() {
             src={img}
             alt=""
             style={{
-              transform: isElementVisible ? 'translateX(0)' : 'translateX(10%)',
+              transform: isElementVisible ? 'translateX(0)' : 'translateX(5%)',
             }}
           />
           <TechSkills isElementVisible={isElementVisible} />

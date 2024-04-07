@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import { IoLocationOutline } from 'react-icons/io5';
 import { MdOutlineEmail } from 'react-icons/md';
 import { FiPhone } from 'react-icons/fi';
-import { useEffect, useRef, useState } from 'react';
-// import { MdOutlineMail } from 'react-icons/md';
+import { useRef } from 'react';
+import { useIntersectionObserver } from './hooks/useIntersectionObserver';
 const contactData = [
   {
     contactId: '123',
@@ -75,20 +75,7 @@ const ContactBox = styled.div`
 function ContactSection() {
   const darkModeToggle = useSelector((store) => store.darkMode.darkMode);
   const myRef = useRef();
-  const [isElementVisible, setIsElementVisible] = useState(false);
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-
-        entry.isIntersecting && setIsElementVisible(true);
-      },
-      {
-        threshold: 0.4,
-      }
-    );
-    observer.observe(myRef.current);
-  }, [isElementVisible]);
+  const isElementVisible = useIntersectionObserver(myRef, 0.1);
   return (
     <section className={darkModeToggle ? 'dark' : ''}>
       <ContactContainer

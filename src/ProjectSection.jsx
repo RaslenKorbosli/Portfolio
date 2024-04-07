@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 import ProjectShowcase from './ui/ProjectsShowcase';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { useIntersectionObserver } from './hooks/useIntersectionObserver';
 const ProjectSectionContainer = styled.div`
   background-color: var(--color-main-background);
   padding: var(--main-padding-layout);
@@ -35,19 +36,8 @@ const ProjectContainer = styled.div`
 function ProjectSection() {
   const darkModeToggle = useSelector((store) => store.darkMode.darkMode);
   const myRef = useRef();
-  const [isElementVisible, setIsElementVisible] = useState(false);
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        entry.isIntersecting && setIsElementVisible(true);
-      },
-      {
-        threshold: 0.1,
-      }
-    );
-    observer.observe(myRef.current);
-  }, [isElementVisible]);
+  const isElementVisible = useIntersectionObserver(myRef, 0.1);
+
   return (
     <section className={darkModeToggle ? 'dark' : ''}>
       <ProjectSectionContainer

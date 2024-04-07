@@ -12,11 +12,7 @@ const darkModeSlice = createSlice({
   initialState,
   reducers: {
     activatedDarkMode(state, action) {
-      console.log(action);
       state.darkMode = action.payload;
-    },
-    updateName(state, fullName) {
-      state.name = fullName;
     },
   },
 });

@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import SocialLink from './ui/SocialLink';
 import { useSelector } from 'react-redux';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
+import { useIntersectionObserver } from './hooks/useIntersectionObserver';
 const Footer = styled.div`
   padding: 5.2rem 4.6rem;
   background-color: #51535c;
@@ -37,18 +38,8 @@ const year = new Date().getFullYear();
 function FooterSection() {
   const darkModeToggle = useSelector((store) => store.darkMode.darkMode);
   const myRef = useRef();
-  const [isElementVisible, setIsElementVisible] = useState(false);
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
+  const isElementVisible = useIntersectionObserver(myRef, 0.4);
 
-        entry.isIntersecting && setIsElementVisible(true);
-      },
-      { threshold: 0.4 }
-    );
-    observer.observe(myRef.current);
-  }, [isElementVisible]);
   return (
     <footer className={darkModeToggle ? 'dark' : ''}>
       <Footer

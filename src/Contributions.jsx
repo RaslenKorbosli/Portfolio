@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import GitHubCalendar from 'react-github-calendar';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { useIntersectionObserver } from './hooks/useIntersectionObserver';
 const ContributionsContainer = styled.div`
   padding: var(--main-padding-layout);
   /* height: 100vh; */
@@ -24,18 +25,7 @@ const H1 = styled.h1`
 function Contributions() {
   const darkModeToggle = useSelector((store) => store.darkMode.darkMode);
   const myRef = useRef();
-  const [isElementVisible, setIsElementVisible] = useState(false);
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-
-        entry.isIntersecting && setIsElementVisible(true);
-      },
-      { threshold: 0.2 }
-    );
-    observer.observe(myRef.current);
-  }, [isElementVisible]);
+  const isElementVisible = useIntersectionObserver(myRef, 0.2);
   return (
     <section className={darkModeToggle ? 'dark' : ''}>
       <ContributionsContainer
@@ -44,7 +34,6 @@ function Contributions() {
         className="dark:bg-zinc-900 dark:text-neutral-200 transition-all"
       >
         <H1>GitHub Contributions </H1>
-
         <GitHubCalendar
           username="raslenkorbosli"
           blockMargin={8}
@@ -52,7 +41,6 @@ function Contributions() {
           blockSize={16}
           theme={{
             light: ['#e8e8e8', '#747476', '#5d5d5f', '#464649', '#2f2f32'],
-            // light: ['#eaecf1b4', '#adb5bd', '#868e96', '#495057', '#343a40'],
           }}
           colorScheme={'light'}
           fontSize={18}
