@@ -7,7 +7,7 @@ import { IoClose } from 'react-icons/io5';
 import { Link } from 'react-scroll';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { activatedDarkMode } from '../darkModeSlice';
+import { activatedDarkMode } from '../redux/darkModeSlice';
 
 const NavBar = styled.div`
   display: flex;
@@ -28,10 +28,13 @@ const NavBar = styled.div`
 `;
 const Li = styled.li`
   cursor: pointer;
+  transition : transform 0.3s
   font-weight: 500;
   /* font-size: 1.8rem; */
   &:hover {
     color: var(--color-hover);
+
+    transform: scale(1.05);
   }
 `;
 
@@ -102,7 +105,7 @@ const MenuContainer = styled.div`
   background-color: var(--color-main-background);
   justify-content: center;
   align-items: center;
-  transition: all 0.3s ease-in-out; /* Transition for smooth animation */
+  transition: all 0.3s ease-in-out;
   @media (max-width: 880px) {
     display: block;
   }
@@ -138,7 +141,7 @@ function Header() {
   }
   return (
     <nav className={darkModeToggle && 'dark'}>
-      <NavBar className=" dark:bg-neutral-800 dark:text-neutral-200 transition-all">
+      <NavBar className=" dark:bg-neutral-800 dark:text-neutral-200 transition-colors">
         <div style={{ display: 'flex', gap: '2rem' }}>
           <Logo href="#home">
             <Link
@@ -156,7 +159,7 @@ function Header() {
             className="dark:text-neutral-200"
             onClick={() => handleDarkModeClick()}
           >
-            {darkModeToggle ? <BsFillMoonStarsFill /> : <FiSun />}
+            {darkModeToggle ? <FiSun /> : <BsFillMoonStarsFill />}
           </LightModeButton>
         </div>
         <DropMenu onClick={handleClick} className=" dark:hover:bg-zinc-600">

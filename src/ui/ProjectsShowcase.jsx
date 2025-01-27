@@ -1,4 +1,3 @@
-import Img from '../../images/backgroundImg.png';
 import styled from 'styled-components';
 import Project from './Project';
 import TechUsed from './TechUsed';
@@ -8,27 +7,31 @@ import { FaArrowUpRightFromSquare } from 'react-icons/fa6';
 const projects = [
   {
     projectID: '001',
-    projectName: 'project showcase01',
-    technologies: ['js', 'css'],
-    projectTitle: 'Check out this project to see my skills in action',
-    githubSource: 'https://github.com/',
-    liveDemoURL: 'https://github.com/',
+    projectName: 'Docai',
+    technologies: ['ts', 'nextjs', 'tailwind', 'postgres'],
+    projectTitle: 'Chat with your documents in secondes with docai',
+    githubSource: 'https://github.com/RaslenKorbosli/docai',
+    liveDemoURL: 'https://docai-raslenkorbosli.vercel.app',
+    projectImage: '/docai.webp',
   },
   {
     projectID: '002',
-    projectName: 'project showcase02',
-    technologies: ['react', 'tailwind', 'redux'],
-    projectTitle: 'Check out this project to see my skills in action',
-    githubSource: 'https://github.com/',
-    liveDemoURL: 'https://github.com/',
+    projectName: 'File Storage',
+    technologies: ['ts', 'nextjs', 'tailwind', 'postgres'],
+    projectTitle: 'Upload and share files online',
+    githubSource:
+      'https://github.com/RaslenKorbosli/file-storage-learning-project',
+    liveDemoURL: 'https://file-storage-learning-project.vercel.app/',
+    projectImage: '/fileStorage.webp',
   },
   {
     projectID: '003',
-    projectName: 'project showcase03',
-    technologies: ['js', 'sass'],
-    projectTitle: 'Check out this project to see my skills in action',
-    githubSource: 'https://github.com/',
-    liveDemoURL: 'https://github.com/',
+    projectName: 'e-commerce store',
+    technologies: ['react', 'tailwind'],
+    projectTitle: 'Online e-commerce shop',
+    githubSource: 'https://github.com/RaslenKorbosli/E-store',
+    liveDemoURL: 'https://e-store-bice-three.vercel.app/home',
+    projectImage: '/store.webp',
   },
 ];
 const ProjectsContainer = styled.div`
@@ -56,8 +59,10 @@ const ProjectText = styled.div`
   gap: 1.2rem;
 `;
 const ProjectImg = styled.img`
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.09);
   max-width: 100%;
-
+  margin-bottom: 14px;
+  border-radius: 0.8rem;
   @media (max-width: 770px) {
     max-width: 80%;
   }
@@ -90,11 +95,17 @@ const Link = styled.span`
     font-weight: 600;
     /* font-size: 1.65rem; */
   }
+  @media (max-width: 400px) {
+    font-size: 1.4rem;
+  }
 `;
 const H2 = styled.h2`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  @media (max-width: 420px) {
+    font-size: 2rem;
+  }
 `;
 const P = styled.p`
   font-size: 1.8rem;
@@ -105,7 +116,9 @@ function ProjectShowcase() {
       {projects.map((project) => (
         <Project key={project.projectID}>
           <div>
-            <ProjectImg src={Img} alt="" />
+            <a href={project.liveDemoURL} target="_blanc">
+              <ProjectImg src={project.projectImage} alt="" />
+            </a>
           </div>
           <ProjectText>
             <div>
@@ -128,7 +141,7 @@ function ProjectShowcase() {
                 <FaGithub />
               </Link>
               <Link>
-                <a href={project.githubSource} target="blanc">
+                <a href={project.liveDemoURL} target="blanc">
                   Live Demo
                 </a>
                 <FaArrowUpRightFromSquare />

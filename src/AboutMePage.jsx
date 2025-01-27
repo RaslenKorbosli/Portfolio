@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import img from '../images/pc-desktop.webp';
+
 import { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useIntersectionObserver } from './hooks/useIntersectionObserver';
@@ -87,7 +87,7 @@ function AboutMePage() {
       >
         <AboutMe>
           <Img
-            src={img}
+            src="/pc-desktop.webp"
             alt="a developer desktop"
             style={{
               transform: isElementVisible

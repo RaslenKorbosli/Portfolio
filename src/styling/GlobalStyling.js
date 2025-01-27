@@ -29,6 +29,7 @@ const GlobalStyling = createGlobalStyle`
   ul{
     list-style: none;
     display: flex;
+    
     gap: 24px;
     font-weight: 500;
 

@@ -17,9 +17,9 @@ const Span = styled.ul`
   }
 `;
 const skills = [
-  ['html', 'css'],
-  ['js', 'react'],
-  ['tailwind', 'sass'],
+  ['html', 'css', 'tailwind'],
+  ['js', 'react', 'nextjs'],
+  ['nodejs', 'expressjs', 'postgres'],
 ];
 function TechSkills({ isElementVisible }) {
   return (
@@ -28,7 +28,10 @@ function TechSkills({ isElementVisible }) {
         transform: isElementVisible ? 'translateY(0)' : 'translateY(40%)',
       }}
     >
-      <Span aria-label="skill stack"> skill stack |</Span>
+      <Span aria-label="skill stack " className="min-w-fit">
+        {' '}
+        skill stack |
+      </Span>
       <ul>
         {skills.map((skillItem, i) => (
           <Skill skillItem={skillItem} key={i} />

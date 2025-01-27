@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-import img from '../images/profilePhoto.webp';
+import styled, { keyframes } from 'styled-components';
 import TechSkills from './ui/TechSkills';
 import { useRef } from 'react';
 import SocialLink from './ui/SocialLink';
@@ -27,10 +26,33 @@ const H1 = styled.h1`
     font-size: 3rem;
   }
 `;
+const float = keyframes`
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+`;
+const morph = keyframes`
+0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+}
+100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}`;
 const Img = styled.img`
   max-width: 100%;
   max-height: 100%;
-  border-radius: 48%;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: ${morph} 8s ease-in-out infinite, ${float} 8s ease-in infinite;
+  border: 3px solid #1f2937;
+  ${(props) =>
+    props.isDark
+      ? `border: 3px solid  #f9f9f9;`
+      : `border: 3px solid #1f2937 ;`}
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.09);
   transition: 0.6s ease-in-out;
   grid-row: -2 / span 2;
   grid-column: 2/-1;
@@ -113,7 +135,8 @@ function HeroSection() {
           </HeroText>
 
           <Img
-            src={img}
+            isDark={darkModeToggle}
+            src="/profilePhoto.webp"
             alt=""
             style={{
               transform: isElementVisible ? 'translateX(0)' : 'translateX(5%)',
