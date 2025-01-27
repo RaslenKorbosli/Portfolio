@@ -47,10 +47,10 @@ const Img = styled.img`
   max-height: 100%;
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   animation: ${morph} 8s ease-in-out infinite, ${float} 8s ease-in infinite;
-  border: 3px solid #1f2937;
+
   ${(props) =>
     props.isDark
-      ? `border: 3px solid  #f9f9f9;`
+      ? `border: 3px solid  #262626;`
       : `border: 3px solid #1f2937 ;`}
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.09);
   transition: 0.6s ease-in-out;

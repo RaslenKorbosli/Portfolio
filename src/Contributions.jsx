@@ -35,7 +35,7 @@ function Contributions() {
       >
         <H1>GitHub Contributions </H1>
         <GitHubCalendar
-          username="raslenkorbosli"
+          username="raslen-korbosli"
           blockMargin={8}
           blockRadius={4}
           blockSize={16}
