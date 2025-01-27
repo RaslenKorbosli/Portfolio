@@ -128,7 +128,7 @@ function HeroSection() {
               <span className="text-[#148bfbdb]"> Developer</span>{' '}
             </H1>{' '}
             <p className="dark:text-neutral-300">
-              Hi, Im Raslen Korbosli, 19 Years Old From Tunisia ,A passionate
+              Hi, Im Raslen Korbosli, 20 Years Old From Tunisia ,A passionate
               Front-end React Developer
             </p>
             <SocialLink color={'#147efb'} />
