@@ -11,7 +11,7 @@ const links = [
     platform: 'Instagram',
   },
   {
-    link: 'https://github.com/RaslenKorbosli',
+    link: 'https://github.com/Raslen-Korbosli',
     logo: <FaGithub />,
     platform: 'Github',
   },
