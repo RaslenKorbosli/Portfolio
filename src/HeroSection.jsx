@@ -1,9 +1,9 @@
-import styled, { keyframes } from 'styled-components';
-import TechSkills from './ui/TechSkills';
 import { useRef } from 'react';
-import SocialLink from './ui/SocialLink';
 import { useSelector } from 'react-redux';
+import styled, { keyframes } from 'styled-components';
 import { useIntersectionObserver } from './hooks/useIntersectionObserver';
+import SocialLink from './ui/SocialLink';
+import TechSkills from './ui/TechSkills';
 const Container = styled.div`
   height: 100vh;
   display: flex;

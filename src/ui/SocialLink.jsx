@@ -2,6 +2,7 @@ import { FaFacebook } from 'react-icons/fa';
 import { FaGithub } from 'react-icons/fa';
 import { FaLinkedin } from 'react-icons/fa';
 import styled from 'styled-components';
+import { TbFileCv } from 'react-icons/tb';
 
 const links = [
   {
@@ -18,6 +19,11 @@ const links = [
     link: 'https://www.linkedin.com/in/raslen-korbosli-2408b3301/',
     logo: <FaLinkedin />,
     platform: 'Linkedin',
+  },
+  {
+    link: './CV_Raslen_korbosli.pdf',
+    logo: <TbFileCv />,
+    platform: 'cv',
   },
 ];
 const LinksLogo = styled.ul`
@@ -46,7 +52,7 @@ function SocialLink({ color, margin = 1 }) {
             {link.logo}
           </a>
         </Li>
-      ))}
+      ))}{' '}
     </LinksLogo>
   );
 }
