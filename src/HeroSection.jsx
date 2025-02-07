@@ -129,7 +129,7 @@ function HeroSection() {
             </H1>{' '}
             <p className="dark:text-neutral-300">
               Hi, Im Raslen Korbosli, 20 Years Old From Tunisia ,A passionate
-              Front-end React Developer
+              Full-stack Developer
             </p>
             <SocialLink color={'#147efb'} />
           </HeroText>
